@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clSku"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_12"
+    android:layout_marginTop="@dimen/dp_8"
+    android:background="@drawable/bg_ongoing_project"
+    android:paddingHorizontal="@dimen/dp_6"
+    android:paddingVertical="@dimen/dp_5">
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/skuThumbnail"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="@id/clSku"
+        app:layout_constraintLeft_toLeftOf="@id/clSku"
+        app:layout_constraintTop_toTopOf="@id/clSku"
+        app:riv_corner_radius="16dp" />
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_semibold"
+        android:maxLength="17"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintLeft_toRightOf="@+id/skuThumbnail"
+        app:layout_constraintTop_toTopOf="@id/skuThumbnail"
+        tools:text="Title">
+
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:maxLength="18"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivStatus"
+        app:layout_constraintLeft_toLeftOf="@+id/tvTitle"
+        tools:text="Hits" />
+
+    <ImageView
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="30dp"
+        android:id="@+id/ivStatus"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:background="@drawable/baseline_favorite_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,7 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
     var regionsList = ArrayList<String>()
     var regionToCountriesMap = HashMap<String, List<Country>>()
     lateinit var spinnerAdapter: ArrayAdapter<String>
-
+    lateinit var countriesAdapter : ArrayAdapter<String>
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,29 +60,35 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
 
         binding.regionsSpinner.adapter = spinnerAdapter
 
-        binding.regionsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedRegion = regionsList[position]
-                val countriesInRegion = regionToCountriesMap[selectedRegion] ?: emptyList()
+        binding.regionsSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedRegion = regionsList[position]
+                    val countriesInRegion = regionToCountriesMap[selectedRegion] ?: emptyList()
 
 
-                val countriesInRegionNames = countriesInRegion.map { it.country }
-                countriesList.clear()
-                countriesList.addAll(defaultCountryList)
-                countriesList.addAll(countriesInRegionNames)
-                // Update the countries spinner with the countries in the selected region
-                val countriesAdapter = ArrayAdapter(
-                    requireContext(),
-                    android.R.layout.simple_spinner_dropdown_item,
-                    countriesList
-                )
-                countriesAdapter.notifyDataSetChanged()
+                    val countriesInRegionNames = countriesInRegion.map { it.country }
+                    countriesList.clear()
+                    countriesList.addAll(defaultCountryList)
+                    countriesList.addAll(countriesInRegionNames)
+                    // Update the countries spinner with the countries in the selected region
+                     countriesAdapter = ArrayAdapter(
+                        requireContext(),
+                        android.R.layout.simple_spinner_dropdown_item,
+                        countriesList
+                    )
+                    countriesAdapter.notifyDataSetChanged()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    // Handle case where nothing is selected
+                }
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Handle case where nothing is selected
-            }
-        }
         listeners()
 
 
@@ -141,12 +147,14 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
 
         binding.tvLogin.setOnClickListener {
             requireActivity().onBackPressed()
+            spinnerAdapter.clear()
+            countriesAdapter.clear()
         }
 
     }
 
     private fun signup(email: String, password: String) {
-        Toast.makeText(requireContext(),"Signup Successful",Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Signup Successful", Toast.LENGTH_SHORT).show()
     }
 
     private fun isValidEmail(email: String): Boolean {
@@ -157,7 +165,6 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
         val passwordPattern = Regex("^(?=.*[0-9])(?=.*[!@#\$%&()])(?=.*[a-z])(?=.*[A-Z]).{8,}$")
         return passwordPattern.matches(password)
     }
-
 
 
     override fun getViewModel() = TestViewModel::class.java

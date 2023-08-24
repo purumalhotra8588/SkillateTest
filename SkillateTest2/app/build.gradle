@@ -74,4 +74,7 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    //round corner image view: remove in next build
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }

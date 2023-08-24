@@ -26,8 +26,8 @@ abstract class BaseFragment<VM : ViewModel, B : ViewBinding> : Fragment() {
         return binding.root
     }
 
-    abstract fun getViewModel() : Class<VM>
+    abstract fun getViewModel(): Class<VM>
 
-    abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?) : B
+    abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): B
 
 }

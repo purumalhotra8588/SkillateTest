@@ -1,178 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="@string/hello"
+            android:textColor="@color/black"
+            android:textSize="@dimen/greeting_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/light"
+            android:gravity="center"
+            android:text="@string/please_signup"
+            android:textColor="#484848"
+            android:textSize="@dimen/sp_13" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/bg_edit"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_10">
+
+            <EditText
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bold"
-                android:gravity="center"
-                android:textSize="@dimen/greeting_text_size"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/please_signup"
-                android:textColor="#484848"
+                android:layout_height="match_parent"
+                android:background="@null"
                 android:fontFamily="@font/light"
-                android:gravity="center"
-                android:layout_marginBottom="30dp"
-                android:textSize="@dimen/sp_13"/>
+                android:hint="@string/enter_business_name"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="15sp" />
+        </LinearLayout>
 
-            <LinearLayout
+        <LinearLayout
+            android:id="@+id/ll_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/bg_edit"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_10">
+
+            <EditText
+                android:id="@+id/et_signupPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_edit"
-                android:padding="@dimen/dp_10"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="25dp">
-                <EditText
-                    android:id="@+id/et_name"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:fontFamily="@font/light"
+                android:hint="@string/create_password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/ivSignUpShowPassword"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="end"
+                android:src="@drawable/eye"
+                app:tint="@color/eye_grey"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/bg_edit"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_10">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/regionsSpinner"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/light"
-                    android:hint="@string/enter_business_name" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_edit"
-                android:padding="@dimen/dp_10"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="25dp">
-                <EditText
-                    android:id="@+id/et_signupPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null"
-                    android:layout_weight="1"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/light"
-                    android:hint="@string/create_password" />
-                <ImageView
-                    android:id="@+id/ivSignUpShowPassword"
-                    android:layout_width="@dimen/dp_25"
-                    android:layout_height="@dimen/dp_20"
-                    android:src="@drawable/eye"
-                    android:layout_gravity="end"
-                    app:tint="@color/eye_grey"></ImageView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_edit"
-                android:padding="@dimen/dp_10"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="25dp">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <Spinner
-                        android:id="@+id/regionsSpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </FrameLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_edit"
-                android:padding="@dimen/dp_10"
-                android:layout_marginLeft="@dimen/dp_25"
-                android:layout_marginRight="@dimen/dp_25"
-                android:layout_marginTop="@dimen/dp_10">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-                    <Spinner
-                        android:id="@+id/countriesSpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_10"
-                android:layout_marginRight="@dimen/dp_25"
-                android:layout_marginLeft="@dimen/dp_25">
-
-                <TextView
-                    android:id="@+id/tvAlreadyLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:fontFamily="@font/light"
-                    android:textSize="@dimen/sp_13"
-                    android:text="@string/already_a_user"
-                    android:textColor="@color/black"/>
-
-
-                <TextView
-                    android:id="@+id/tvLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_5"
-                    android:layout_toRightOf="@+id/tvAlreadyLogin"
-                    android:fontFamily="@font/light"
-                    android:text="@string/login_here"
-                    android:textColor="@color/primary"
-                    android:textSize="@dimen/sp_13" />
-
-            </RelativeLayout>
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/tvSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/sign_up"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:elevation="@dimen/dp_5"
-                android:fontFamily="@font/bold"
-                android:layout_margin="@dimen/dp_25"
-                android:background="@drawable/bg_round_primary"
-                android:textSize="@dimen/sp_16"/>
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_25"
+            android:background="@drawable/bg_edit"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_10">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/countriesSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_25"
+            android:padding="@dimen/dp_10">
+
+            <TextView
+                android:id="@+id/tvAlreadyLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/light"
+                android:text="@string/already_a_user"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_13" />
+
+
+            <TextView
+                android:id="@+id/tvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_toRightOf="@+id/tvAlreadyLogin"
+                android:fontFamily="@font/light"
+                android:text="@string/login_here"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/sp_13" />
+
+        </RelativeLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/tvSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_25"
+            android:background="@drawable/bg_round_primary"
+            android:elevation="@dimen/dp_5"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16" />
+
+
+    </LinearLayout>
 
 
 </ScrollView>

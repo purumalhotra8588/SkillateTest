@@ -1,8 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/toolbar_background"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:backgroundTint="@color/primary_light"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/bg_toolbar"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:backgroundTint="@color/primary"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/bg_toolbar"
+            app:layout_constraintTop_toTopOf="parent">
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:src="@drawable/back"
+        android:padding="@dimen/dp_15"
+        app:tint="@color/white"
+        android:id="@+id/backButton"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_background"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_background"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_tittle"
+        android:layout_gravity="center"
+        android:text="BookShelf"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_background"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_background"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <FrameLayout
+        android:id="@+id/fl_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tool_bar_height"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/white"
+        android:elevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_background">
+
+
+        <LinearLayout
+            android:id="@+id/llFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/dp_7"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Sort"
+                android:textColor="@color/black"
+                android:textSize="16sp">
+
+            </TextView>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="@dimen/dp_10"
+                android:src="@drawable/filter" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="@dimen/dp_15"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/dp_7"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingHorizontal="@dimen/dp_15"
+                android:paddingVertical="@dimen/dp_5"
+                android:text="A-Z"
+                android:background="@color/light_grey"
+                android:textColor="@color/black"
+                android:textSize="16sp">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/flSort"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_tool_bar">
+
+
+        <LinearLayout
+            android:id="@+id/llSort"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/dp_5">
+
+                <CheckBox
+                    android:id="@+id/cbTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_30"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Title"
+                    android:textSize="@dimen/sp_14" />
+
+                <CheckBox
+                    android:id="@+id/cbHits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_30"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Hits"
+                    android:textSize="@dimen/sp_14" />
+
+                <CheckBox
+                    android:id="@+id/cbFavs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_30"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Favourites"
+                    android:textSize="@dimen/sp_14" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_book"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fl_tool_bar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

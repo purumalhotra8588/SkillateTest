@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+'<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" /><!-- Initially set to gone -->
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /><!-- Initially set to gone -->
 
 
     <LinearLayout
+        android:id="@+id/clMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/clMain"
         android:orientation="vertical">
 
         <LinearLayout
@@ -27,88 +27,93 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hello"
-                android:textColor="@color/black"
                 android:fontFamily="@font/bold"
                 android:gravity="center"
-                android:textSize="@dimen/greeting_text_size"/>
+                android:text="@string/hello"
+                android:textColor="@color/black"
+                android:textSize="@dimen/greeting_text_size" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/please"
-                android:textColor="#484848"
+                android:layout_marginBottom="30dp"
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center"
-                android:layout_marginBottom="30dp"
-                android:textSize="@dimen/sp_13"/>
+                android:text="@string/please"
+                android:textColor="#484848"
+                android:textSize="@dimen/sp_13" />
 
 
             <LinearLayout
                 android:id="@+id/ll_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_edit"
-                android:padding="@dimen/dp_10"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="25dp">
+                android:layout_marginRight="25dp"
+                android:background="@drawable/bg_edit"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
                 <EditText
                     android:id="@+id/et_loginEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
+                    android:fontFamily="@font/light"
+                    android:hint="@string/enter_email"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/light"
-                    android:hint="@string/enter_email" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_edit"
-                android:padding="@dimen/dp_10"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="25dp">
+                android:layout_marginRight="25dp"
+                android:background="@drawable/bg_edit"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
                 <EditText
                     android:id="@+id/et_loginPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@null"
-                    android:gravity="center_vertical"
                     android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/light"
+                    android:gravity="center_vertical"
+                    android:hint="@string/enter_password"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/light"
-                    android:hint="@string/enter_password" />
+                    android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/ivShowPassword"
                     android:layout_width="@dimen/dp_25"
                     android:layout_height="@dimen/dp_20"
-                    android:src="@drawable/eye"
                     android:layout_gravity="end"
+                    android:src="@drawable/eye"
                     app:tint="@color/eye_grey"></ImageView>
 
             </LinearLayout>
+
             <RelativeLayout
+                android:id="@+id/rlSingup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingTop="@dimen/dp_10"
-                android:paddingLeft="@dimen/dp_10"
-                android:id="@+id/rlSingup"
+                android:layout_marginLeft="@dimen/dp_25"
                 android:layout_marginRight="@dimen/dp_25"
-                android:layout_marginLeft="@dimen/dp_25">
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
 
                 <TextView
                     android:id="@+id/tvNewToApp"
@@ -116,9 +121,9 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:fontFamily="@font/light"
-                    android:textSize="@dimen/sp_13"
                     android:text="@string/new_to_app"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_13" />
 
                 <TextView
                     android:id="@+id/tvSignup"
@@ -138,40 +143,38 @@
                 android:id="@+id/tv_email_instead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/use_email"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_10"
                 android:fontFamily="@font/medium"
                 android:gravity="center|right"
+                android:text="@string/use_email"
                 android:textColor="@color/black"
-                android:visibility="gone"
-                android:layout_marginTop="@dimen/dp_10"
-                android:layout_marginBottom="@dimen/dp_10"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_marginRight="@dimen/dp_20"
-                android:textSize="12sp"/>
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:elevation="@dimen/dp_5"
-                android:fontFamily="@font/bold"
                 android:layout_margin="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_5"
                 android:layout_marginEnd="@dimen/dp_5"
                 android:background="@drawable/bg_round_primary"
-                android:textSize="@dimen/sp_16"/>
+                android:elevation="@dimen/dp_5"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16" />
 
 
         </LinearLayout>
 
 
-
     </LinearLayout>
 
 
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>'

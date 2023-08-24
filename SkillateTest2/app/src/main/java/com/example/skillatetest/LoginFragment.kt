@@ -12,7 +12,7 @@ import com.spyneai.base.BaseFragment
 import com.spyneai.dashboard.ui.base.ViewModelFactory
 
 
-class LoginFragment : BaseFragment<TestViewModel,ActivityLoginBinding>() {
+class LoginFragment : BaseFragment<TestViewModel, ActivityLoginBinding>() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,7 +27,12 @@ class LoginFragment : BaseFragment<TestViewModel,ActivityLoginBinding>() {
                 binding.etLoginPassword.inputType =
                     InputType.TYPE_CLASS_TEXT or InputType.TYPE_CLASS_TEXT
                 showPassword = true
-                binding.ivShowPassword.setColorFilter(ContextCompat.getColor(requireContext(), R.color.primary))
+                binding.ivShowPassword.setColorFilter(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.primary
+                    )
+                )
                 binding.etLoginPassword.setText(binding.etLoginPassword.text.toString())
             } else {
                 binding.etLoginPassword.inputType =
@@ -94,11 +99,9 @@ class LoginFragment : BaseFragment<TestViewModel,ActivityLoginBinding>() {
     }
 
 
-
     private fun login(email: String, password: String) {
 
     }
-
 
 
     override fun getViewModel() = TestViewModel::class.java
@@ -107,7 +110,6 @@ class LoginFragment : BaseFragment<TestViewModel,ActivityLoginBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?
     ) = ActivityLoginBinding.inflate(inflater, container, false)
-
 
 
 }

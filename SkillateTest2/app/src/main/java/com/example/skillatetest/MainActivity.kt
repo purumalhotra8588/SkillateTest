@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
             .add(R.id.flContainer, loginFragment)
             .commit()
 
-        viewModel.openLogin.observe(this){
-            if(it){
+        viewModel.openLogin.observe(this) {
+            if (it) {
                 supportFragmentManager.beginTransaction()
                     .remove(loginFragment)
                     .add(R.id.flContainer, signupFragment)
