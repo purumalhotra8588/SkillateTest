@@ -1,11 +1,11 @@
-package com.spyneai.activity
+package com.example.skillatetest.acitivity
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.example.skillatetest.LoginFragment
+import com.example.skillatetest.fragments.LoginFragment
 import com.example.skillatetest.R
 
 

@@ -1,8 +1,7 @@
-package com.spyneai.dashboard.ui.base
+package com.example.skillatetest.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.skillatetest.TestViewModel
 
 class ViewModelFactory() : ViewModelProvider.NewInstanceFactory() {
 

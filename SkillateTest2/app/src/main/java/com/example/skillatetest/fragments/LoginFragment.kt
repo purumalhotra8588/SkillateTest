@@ -1,4 +1,4 @@
-package com.example.skillatetest
+package com.example.skillatetest.fragments
 
 import android.os.Bundle
 import android.text.InputType
@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.example.skillatetest.databinding.ActivityLoginBinding
-import com.spyneai.base.BaseFragment
-import com.spyneai.dashboard.ui.base.ViewModelFactory
+import com.example.skillatetest.R
+import com.example.skillatetest.viewmodel.TestViewModel
 
 
 class LoginFragment : BaseFragment<TestViewModel, ActivityLoginBinding>() {
@@ -101,6 +100,7 @@ class LoginFragment : BaseFragment<TestViewModel, ActivityLoginBinding>() {
 
     private fun login(email: String, password: String) {
 
+        viewModel.openBookPage.value = true
     }
 
 

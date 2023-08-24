@@ -9,7 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.skillatetest.databinding.SignupFragmentBinding
 import com.google.gson.Gson
-import com.spyneai.base.BaseFragment
+import com.example.skillatetest.fragments.BaseFragment
+import com.example.skillatetest.viewmodel.TestViewModel
 import java.io.IOException
 import java.io.InputStream
 import java.nio.charset.Charset
