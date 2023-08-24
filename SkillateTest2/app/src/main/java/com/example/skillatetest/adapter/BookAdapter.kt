@@ -1,16 +1,20 @@
 package com.example.skillatetest.adapter
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.skillatetest.R
 import com.example.skillatetest.data.Book
+import com.example.skillatetest.fragments.BookDescriptionFragment
 
 class BookAdapter(
     val context: Context,
@@ -31,6 +35,7 @@ class BookAdapter(
         val tvHits: TextView = view.findViewById(R.id.tvHits)
         val skuThumbnail: ImageView = view.findViewById(R.id.skuThumbnail)
         val ivStatus: ImageView = view.findViewById(R.id.ivStatus)
+        val clSku: ConstraintLayout = view.findViewById(R.id.clSku)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {

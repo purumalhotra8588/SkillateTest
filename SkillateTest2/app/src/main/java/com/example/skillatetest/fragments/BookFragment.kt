@@ -112,6 +112,9 @@ class BookFragment : BaseFragment<TestViewModel, FragmentBookBinding>(), OnItemC
     override fun onItemClick(view: View, position: Int, data: Any?) {
         val clickedBook = data as Book
 
+        viewModel.openDescription.value = true
+        viewModel.selectedBook = clickedBook
+
     }
 
 
