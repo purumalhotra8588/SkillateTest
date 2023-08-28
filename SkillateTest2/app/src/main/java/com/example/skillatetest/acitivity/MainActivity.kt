@@ -78,11 +78,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {
-        val fragmentManager = supportFragmentManager
-        val fragment = fragmentManager.findFragmentByTag("BookFragment")
-        if(!(fragment is BookFragment))
-            super.onBackPressed()
-    }
 
 }
