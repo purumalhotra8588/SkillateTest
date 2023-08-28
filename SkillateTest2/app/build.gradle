@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+apply plugin: 'kotlin-kapt'
 
 android {
     namespace 'com.example.skillatetest'
@@ -80,4 +81,11 @@ dependencies {
 
     //round corner image view: remove in next build
     implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    //RoomDB
+    def roomVersion = "2.4.3"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation "androidx.room:room-paging:$roomVersion"
 }

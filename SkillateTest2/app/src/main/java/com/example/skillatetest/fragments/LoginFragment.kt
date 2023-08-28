@@ -12,13 +12,20 @@ import com.example.skillatetest.viewmodel.TestViewModel
 
 
 class LoginFragment : BaseFragment<TestViewModel, ActivityLoginBinding>() {
+    companion object {
+        const val TAG = "LoginFragment"
+    }
 
 
+    var showPassword = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        retainInstance = true
 
+        listeners()
+    }
 
-        var showPassword = false
+    private fun listeners() {
 
         binding.ivShowPassword.setOnClickListener {
 
@@ -56,12 +63,6 @@ class LoginFragment : BaseFragment<TestViewModel, ActivityLoginBinding>() {
                 InputType.TYPE_CLASS_TEXT or InputType.TYPE_CLASS_TEXT
         }
 
-
-
-        listeners()
-    }
-
-    private fun listeners() {
         binding.btLogin.setOnClickListener {
             val email = binding.etLoginEmail.text.toString().trim()
             val password = binding.etLoginPassword.text.toString().trim()
@@ -87,7 +88,6 @@ class LoginFragment : BaseFragment<TestViewModel, ActivityLoginBinding>() {
 
         binding.tvSignup.setOnClickListener {
             viewModel.openLogin.value = true
-
         }
 
 

@@ -12,9 +12,14 @@ import com.example.skillatetest.viewmodel.TestViewModel
 
 class BookDescriptionFragment : BaseFragment<TestViewModel, BookDescriptionBindingBinding>() {
 
+
+    companion object {
+        const val TAG = "BookDescriptionFragment"
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        retainInstance = true
 
         binding.tvTitle.text = viewModel.selectedBook?.title
 

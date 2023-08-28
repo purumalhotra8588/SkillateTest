@@ -9,10 +9,14 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.viewModelScope
 import com.example.skillatetest.databinding.SignupFragmentBinding
 import com.google.gson.Gson
 import com.example.skillatetest.fragments.BaseFragment
 import com.example.skillatetest.viewmodel.TestViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.io.InputStream
 import java.nio.charset.Charset
@@ -26,9 +30,13 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
     lateinit var countriesAdapter : ArrayAdapter<String>
     var showPassword = false
 
+    companion object {
+        const val TAG = "SignUpFragment"
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        retainInstance = true
 
         val jsonString = loadJSONFromAsset("countries.json")
         val countryData = parseJSON(jsonString)
@@ -179,12 +187,31 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
             }
 
             if (isEmailValid && isPasswordValid) {
-                // Both email and password are valid, proceed with login
-                signup(email, password)
+                viewModel.allRegisteredEmails.observe(viewLifecycleOwner) { registeredEmails ->
+                    val isAlreadyRegistered = registeredEmails.any { it.email == email }
 
-                binding.etName.isClickable = false
-                binding.etSignupPassword.isClickable = false
+                    if (isAlreadyRegistered) {
+                        binding.etName.error = "This email is already registered"
+                    } else {
+                        viewModel.viewModelScope.launch(Dispatchers.IO) {
+                            viewModel.addEmailToRegisteredList(email) // Add the email to the list
+
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(requireContext(), "Signup Successful", Toast.LENGTH_SHORT).show()
+
+                                binding.etName.text.clear()
+                                binding.etSignupPassword.text.clear()
+
+                                viewModel.logout.value = true
+                            }
+                        }
+
+                        binding.etName.isClickable = false
+                        binding.etSignupPassword.isClickable = false
+                    }
+                }
             }
+
         }
 
         binding.tvLogin.setOnClickListener {
@@ -193,10 +220,6 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
             countriesAdapter.clear()
         }
 
-    }
-
-    private fun signup(email: String, password: String) {
-        Toast.makeText(requireContext(), "Signup Successful", Toast.LENGTH_SHORT).show()
     }
 
     private fun isValidEmail(email: String): Boolean {

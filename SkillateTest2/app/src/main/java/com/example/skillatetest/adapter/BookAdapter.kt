@@ -76,6 +76,8 @@ class BookAdapter(
             }
             viewHolder.ivStatus.setImageResource(updatedImageResource)
 
+            // Update the isFavorite field in the bookData list
+            jsonString[position].isFavorite = currentBook.isFavorite
             // Notify the adapter about the data change
             notifyItemChanged(position)
         }

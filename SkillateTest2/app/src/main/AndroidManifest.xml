@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/file_paths"
         android:icon="@mipmap/app_ic"
@@ -24,11 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".SignUpFragment"
-            android:exported="true"
-            android:theme="@style/Theme.Fab_Bottom_app_bar">
-    </activity>
     </application>
 
 </manifest>

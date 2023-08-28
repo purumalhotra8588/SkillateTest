@@ -23,8 +23,12 @@ class BookFragment : BaseFragment<TestViewModel, FragmentBookBinding>(), OnItemC
 
     private var isAscending = true
 
+    companion object {
+        const val TAG = "BookFragment"
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        retainInstance = true
 
         val jsonString = loadJSONFromAsset("books.json")
         val bookData = parseJSON(jsonString)
