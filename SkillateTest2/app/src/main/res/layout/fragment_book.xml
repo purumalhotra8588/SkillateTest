@@ -44,6 +44,7 @@
         android:layout_width="@dimen/dp_35"
         android:layout_height="@dimen/dp_35"
         android:id="@+id/btLogout"
+        android:layout_marginRight="@dimen/dp_10"
         android:background="@drawable/baseline_logout_24"
         app:layout_constraintRight_toRightOf="@id/toolbar_background"
         app:layout_constraintTop_toTopOf="@id/tv_tittle"

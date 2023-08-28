@@ -49,6 +49,7 @@ class BookFragment : BaseFragment<TestViewModel, FragmentBookBinding>(), OnItemC
             Toast.makeText(requireContext(),"You have logged out successfully",Toast.LENGTH_SHORT).show()
             viewModel.logout.value = true
         }
+
         binding.llFilter.setOnClickListener {
             if (binding.flSort.visibility != View.VISIBLE) {
                 binding.flSort.visibility = View.VISIBLE

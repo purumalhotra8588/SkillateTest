@@ -83,7 +83,9 @@
                 android:layout_height="@dimen/dp_20"
                 android:layout_gravity="end"
                 android:src="@drawable/eye"
-                app:tint="@color/eye_grey"></ImageView>
+                app:tint="@color/eye_grey">
+
+            </ImageView>
         </LinearLayout>
 
         <LinearLayout

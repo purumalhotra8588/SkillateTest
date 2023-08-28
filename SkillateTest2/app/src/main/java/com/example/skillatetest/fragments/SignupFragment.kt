@@ -1,12 +1,14 @@
 package com.example.skillatetest
 
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.skillatetest.databinding.SignupFragmentBinding
 import com.google.gson.Gson
 import com.example.skillatetest.fragments.BaseFragment
@@ -22,6 +24,7 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
     var regionToCountriesMap = HashMap<String, List<Country>>()
     lateinit var spinnerAdapter: ArrayAdapter<String>
     lateinit var countriesAdapter : ArrayAdapter<String>
+    var showPassword = false
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,9 +37,9 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
         // Group countries by region
         val groupedCountries = countryData.data.values.groupBy { it.region }
 
+        regionsList.add(getString(R.string.select_region))
         // Populate regionsList and regionToCountriesMap
         for ((region, countries) in groupedCountries) {
-            regionsList.add(getString(R.string.select_region))
             regionsList.add(region)
             regionToCountriesMap[region] = countries
         }
@@ -119,6 +122,44 @@ class SignUpFragment : BaseFragment<TestViewModel, SignupFragmentBinding>() {
 
 
     private fun listeners() {
+
+        binding.ivSignUpShowPassword.setOnClickListener {
+
+            if (!showPassword) {
+                binding.etSignupPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_CLASS_TEXT
+                showPassword = true
+                binding.ivSignUpShowPassword.setColorFilter(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.primary
+                    )
+                )
+                binding.etSignupPassword.setText(binding.etSignupPassword.text.toString())
+            } else {
+                binding.etSignupPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                showPassword = false
+
+                binding.ivSignUpShowPassword.setColorFilter(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.eye_grey
+                    )
+                )
+                binding.etSignupPassword.setText(binding.etSignupPassword.text.toString())
+
+            }
+        }
+        if (!showPassword) {
+            binding.etSignupPassword.inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        } else {
+            binding.etSignupPassword.inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_CLASS_TEXT
+        }
+
+
         binding.tvSignUp.setOnClickListener {
             val email = binding.etName.text.toString().trim()
             val password = binding.etSignupPassword.text.toString().trim()

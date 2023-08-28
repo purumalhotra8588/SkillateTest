@@ -38,40 +38,44 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.logout.observe(this) {
             if (it) {
-                supportFragmentManager.beginTransaction()
-                    .remove(bookFragment)
-                    .add(R.id.flContainer, loginFragment)
-                    .addToBackStack(null)
-                    .commit()
+                if (supportFragmentManager.findFragmentById(R.id.flContainer) !is LoginFragment) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flContainer, loginFragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
             }
         }
 
         viewModel.openLogin.observe(this) {
             if (it) {
-                supportFragmentManager.beginTransaction()
-                    .remove(loginFragment)
-                    .add(R.id.flContainer, signupFragment)
-                    .addToBackStack(null)
-                    .commit()
+                if (supportFragmentManager.findFragmentById(R.id.flContainer) !is SignUpFragment) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flContainer, signupFragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
             }
         }
 
-
         viewModel.openBookPage.observe(this) {
             if (it) {
-                supportFragmentManager.beginTransaction()
-                    .remove(loginFragment)
-                    .add(R.id.flContainer, bookFragment)
-                    .commit()
+                if (supportFragmentManager.findFragmentById(R.id.flContainer) !is BookFragment) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flContainer, bookFragment)
+                        .commit()
+                }
             }
         }
 
         viewModel.openDescription.observe(this) {
             if (it) {
-                supportFragmentManager.beginTransaction()
-                    .add(R.id.flContainer, bookDescriptionFragment)
-                    .addToBackStack(null)
-                    .commit()
+                if (supportFragmentManager.findFragmentById(R.id.flContainer) !is BookDescriptionFragment) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flContainer, bookDescriptionFragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
             }
         }
 
