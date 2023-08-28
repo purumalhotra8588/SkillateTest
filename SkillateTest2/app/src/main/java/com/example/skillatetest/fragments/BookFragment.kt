@@ -23,17 +23,24 @@ class BookFragment : BaseFragment<TestViewModel, FragmentBookBinding>(), OnItemC
 
     private var isAscending = true
 
+    private var jsonData : String? =null
+
+    private var originalData = ArrayList<Book>()
+
     companion object {
         const val TAG = "BookFragment"
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        retainInstance = true
 
-        val jsonString = loadJSONFromAsset("books.json")
-        val bookData = parseJSON(jsonString)
 
-        adapter = BookAdapter(requireContext(), bookData, this)
+
+        if(jsonData==null){
+            jsonData = loadJSONFromAsset("books.json")
+            originalData.addAll(parseJSON(jsonData))
+        }
+
+        adapter = BookAdapter(requireContext(), originalData, this)
 
         binding.rvBook.adapter = adapter
         binding.rvBook.layoutManager =
@@ -69,7 +76,11 @@ class BookFragment : BaseFragment<TestViewModel, FragmentBookBinding>(), OnItemC
         }
 
         binding.cbFavs.setOnCheckedChangeListener { _, isChecked ->
-            updateSorting()
+            if(isChecked){
+                updateSorting()
+            }else{
+                adapter.updateData(originalData.filter { !it.isFavorite })
+            }
         }
 
         binding.cbHits.setOnCheckedChangeListener { _, isChecked ->
@@ -82,34 +93,35 @@ class BookFragment : BaseFragment<TestViewModel, FragmentBookBinding>(), OnItemC
     }
 
     private fun updateSorting() {
-        val jsonString = loadJSONFromAsset("books.json")
-        val bookData = parseJSON(jsonString)
 
-        val sortedList:List<Book> = when {
+        var sortedList:List<Book> = when {
             binding.cbTitle.isChecked -> {
                 if (isAscending) {
-                    bookData.sortedBy { it.title }
+                    originalData.sortedBy { it.title }
                 } else {
-                    bookData.sortedByDescending { it.title }
+                    originalData.sortedByDescending { it.title }
                 }
             }
             binding.cbHits.isChecked -> {
                 if (isAscending) {
-                    bookData.sortedBy { it.hits }
+                    originalData.sortedBy { it.hits }
                 } else {
-                    bookData.sortedByDescending { it.hits }
+                    originalData.sortedByDescending { it.hits }
                 }
             }
             binding.cbFavs.isChecked -> {
                 if (isAscending) {
-                    bookData.sortedBy { it.isFavorite }
+                    originalData.sortedBy { it.isFavorite }
                 } else {
-                    bookData.sortedByDescending { it.isFavorite }
+                    originalData.sortedByDescending { it.isFavorite }
                 }
             }
-            else -> bookData // Default sorting (no checkbox selected)
+            else -> originalData // Default sorting (no checkbox selected)
         }
 
+        if(!binding.cbFavs.isChecked){
+            sortedList = sortedList.filter { !it.isFavorite }
+        }
         adapter.updateData(sortedList)
     }
 
